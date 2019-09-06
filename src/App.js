@@ -38,7 +38,7 @@ class App extends Component {
    setVideoSceenSize() {
      //muuta videon kokoa kun näytön leveys menee alle 800
      if(this.state.width < 850){
-       if(this.state.width < 400){ //mobiili
+       if(this.state.width < 400){ //mobiilinäkymä
          console.log(this.state.width);
          this.state.video.width = this.state.width;
        }else{
