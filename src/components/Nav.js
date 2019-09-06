@@ -26,8 +26,8 @@ export default function DenseAppBar() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" color="inherit">
-                        RappioTube2
-            </Typography>
+                        RappioTube
+                    </Typography>
                 </Toolbar>
             </AppBar>
         </div>

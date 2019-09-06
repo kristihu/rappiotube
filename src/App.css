@@ -23,6 +23,43 @@
   color: #61dafb;
 }
 
+.TimeTable {
+  border: solid 0.5px;
+  width: 20%;
+  height: 80vh;
+  float: left;
+}
+
+.Footer {
+  background-color: grey;
+  height: 10vh;
+  z-index: 5;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.VideoContainer {
+  color: red;
+  width: 80%;
+  background-color: #ececec;
+  height: 85vh;
+  margin-left: 20%;
+}
+
+@media only screen and (max-width: 600px) {
+  .TimeTable{
+    display: none;
+  }
+  .VideoContainer {
+    color: red;
+    width: 100%;
+    background-color: #ececec;
+    height: 85vh;
+    margin-left: 0;
+}
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
