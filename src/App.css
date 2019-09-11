@@ -1,3 +1,8 @@
+
+body{
+  background-color: #222629;
+}
+
 .App {
   text-align: center;
 }
@@ -6,6 +11,16 @@
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
+}
+
+
+.MuiToolbar-root{
+  background-color: #222629;
+}
+
+#navButton {
+ /* background-color: #86C232; */
+  color: #86C232;
 }
 
 .App-header {
@@ -21,6 +36,52 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.TimeTable {
+  border: solid 0.5px;
+  width: 20%;
+  height: 80vh;
+  float: left;
+}
+
+.Footer {
+  background-color: grey;
+  height: 10vh;
+  z-index: 5;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  display: none;
+}
+
+#playerElement1 {
+  width:100%; height:0; padding:0 0 56.25% 0;
+}
+
+h2{
+  color: #86C232;
+}
+.VideoContainer {
+  color: #86C232;
+  width: 80%;
+
+  height: 85vh;
+  margin-left: 20%;
+  background-color: transparent;
+}
+
+@media only screen and (max-width: 600px) {
+  .TimeTable{
+    display: none;
+  }
+  .VideoContainer {
+    width: 100%;
+
+    height: 85vh;
+    margin-left: 0;
+    background-color: transparent;
+}
 }
 
 @keyframes App-logo-spin {

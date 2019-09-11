@@ -1,33 +1,71 @@
-import React from 'react';
-
+import React, {Component} from 'react';
+import Nav from './components/Nav';
+import TimeTable from './components/TimeTable';
+import VideoContainer from './components/VideoContainer';
+import Footer from './components/Footer';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-success">Search</Button>
-          </Form>
-        </Navbar.Collapse>
-      </Navbar>
-    </div>
-  );
+class App extends Component {
+
+  constructor(props) {
+    super(props);
+     this.state = {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        video: {
+          width: "600px",
+          height: "400px",
+        }
+       };
+     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+     this.setVideoSceenSize = this.setVideoSceenSize.bind(this);
+   }
+
+   componentDidMount() {
+     this.updateWindowDimensions();
+     window.addEventListener('resize', this.updateWindowDimensions);
+   }
+
+   componentWillUnmount() {
+     window.removeEventListener('resize', this.updateWindowDimensions);
+   }
+
+   updateWindowDimensions() {
+     this.setState({ width: window.innerWidth, height: window.innerHeight });
+     this.setVideoSceenSize();
+   }
+
+   setVideoSceenSize() {
+     //muuta videon kokoa kun näytön leveys menee alle 800
+     if(this.state.width < 850){
+       if(this.state.width < 400){ //mobiilinäkymä
+         console.log(this.state.width);
+         this.state.video.width = this.state.width;
+       }else{
+       this.state.video.width = "400px";
+       this.state.video.height = "300px";
+      }
+     }else{
+       this.state.video.width = "600px";
+       this.state.video.height = "400px";
+     }
+     this.forceUpdate(); //Jotta state.video päivyttyy
+   }
+
+render() {
+
+    return (
+        <div className="App">
+            <Nav />
+            <TimeTable />
+            <VideoContainer
+              video={this.state.video}
+              asd={"asdsadsd"}
+            />
+            <Footer />
+        </div>
+    );
+  }
 }
 
 export default App;
