@@ -60,7 +60,7 @@ render(){
           <Header title="RappioTube" scroll>
 
           </Header>
-          <Drawer title="Valikko">
+          <Drawer title="Valikko" id="asd">
             <Navigation>
               <Link to="/landingpage">KOTI</Link>
               <Link to="/">Link</Link>
@@ -76,7 +76,6 @@ render(){
             <TimeTable />
             <VideoContainer
               video={this.state.video}
-              asd={"asdsadsd"}
             />
       </div>
   );

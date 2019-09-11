@@ -2,6 +2,19 @@ import React, {Component} from 'react';
 
 class VideoContainer extends Component {
 
+  constructor(props) {
+  super(props);
+   this.state = {
+      width: window.innerWidth,
+      height: window.innerHeight,
+      video: {
+        width: "600px",
+        height: "400px",
+      }
+     };
+ }
+
+
  componentDidMount() {
    console.log("video ",this.props);
  }

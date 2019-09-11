@@ -22,6 +22,11 @@ body{
   background-color: #222629;
 }
 
+#asd {
+  background-color: #222629;
+  color: #86C232;
+}
+
 #navButton {
  /* background-color: #86C232; */
   color: #86C232;
@@ -59,11 +64,6 @@ body{
   display: none;
 }
 
-/*
-#playerElement1 {
-  width:100%; height:0; padding:0 0 56.25% 0;
-}*/
-
 .mdl-layout__header-row {
   background-color: #222629;
   color: #86C232;
@@ -81,8 +81,13 @@ body{
   background-color: #222629;
 }
 
+.mdl-navigation__link {
+  color: #86C232;
+}
+
 #playerElement1 {
-  width:60%; height:800px;
+  width:60%;
+  height: 50vh;
   position: absolute;
   left: 30%;
   right: 50%;
