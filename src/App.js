@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import {Layout, Header, Navigation, Drawer, Content} from 'react-mdl';
+import {HashRouter as Router, Route} from 'react-router-dom';
 import './App.css';
 import Main from './components/main';
 import {Link} from 'react-router-dom';
 import Nav from './components/Nav';
 import TimeTable from './components/TimeTable';
 import VideoContainer from './components/VideoContainer';
+import landingpage from './components/landingpage';
 
 class App extends Component {
   constructor(props) {
@@ -63,6 +65,9 @@ render(){
           <Drawer title="Valikko" id="asd">
             <Navigation>
               <Link to="/landingpage">KOTI</Link>
+              <Route exact path="/landingpage" render={(props) => (
+                  <landingpage {...props} video={this.state.video}/>
+              )}/>
               <Link to="/">Link</Link>
               <Link to="/">Link</Link>
             </Navigation>
@@ -74,9 +79,6 @@ render(){
         </Layout>
         <Nav />
             <TimeTable />
-            <VideoContainer
-              video={this.state.video}
-            />
       </div>
   );
 }
