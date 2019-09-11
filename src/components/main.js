@@ -5,7 +5,6 @@ import landingpage from './landingpage';
 const Main = () => (
   <Switch>
     <Route path="/landingpage" component={landingpage} />
-
   </Switch>
 )
 

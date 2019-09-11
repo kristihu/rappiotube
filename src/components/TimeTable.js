@@ -6,7 +6,7 @@ render() {
   return(
     <React.Fragment>
     <div className="TimeTable">
-    <h2>TimeTable</h2>
+    <h2 id="aikataulu">Aikataulu</h2>
     </div>
     </React.Fragment>
   );
