@@ -8,6 +8,7 @@ import Nav from './components/Nav';
 import TimeTable from './components/TimeTable';
 import VideoContainer from './components/VideoContainer';
 import Landingpage from './components/Landingpage';
+import MultipleVideos from './components/MultipleVideos';
 
 class App extends Component {
   constructor(props) {
@@ -65,13 +66,7 @@ render(){
           <Drawer title="Valikko" id="asd">
             <Navigation>
               <Link to="/landingpage">Etusivu</Link>
-              <Route exact path="/landingpage" render={(props) => (
-                  <landingpage {...props} video={this.state.video}/>
-              )}/>
-              <Link to="/landingpage">Useampi Streami</Link>
-                      <Route exact path="/multiplestreams" render={(props) => (
-                          <landingpage {...props} video={this.state.video} />
-              )} />
+              <Link to="/multiplestreams">Useampi Streami</Link>
             </Navigation>
           </Drawer>
           <Content>
