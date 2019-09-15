@@ -28,7 +28,7 @@ changeVideoLeft() {
     this.setState({playerElement: (playerElementString + this.state.id)});
   //  document.querySelector("#"+this.state.playerElement).childNodes[0].children[0].id = this.state.playerElement + "-Video";
 //    this.forceUpdate();
-    console.log(document.querySelector("#"+this.state.playerElement).childNodes[0].children[0].id);
+    //console.log(document.querySelector("#"+this.state.playerElement).childNodes[0].children[0].id);
   }
 }
 

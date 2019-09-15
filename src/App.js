@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import {Layout, Header, Navigation, Drawer, Content} from 'react-mdl';
 import {HashRouter as Router, Route} from 'react-router-dom';
 import './App.css';
-import Main from './components/main';
+import Main from './components/Main';
 import {Link} from 'react-router-dom';
 import Nav from './components/Nav';
 import TimeTable from './components/TimeTable';
 import VideoContainer from './components/VideoContainer';
-import landingpage from './components/landingpage';
+import Landingpage from './components/Landingpage';
 
 class App extends Component {
   constructor(props) {
@@ -64,12 +64,14 @@ render(){
           </Header>
           <Drawer title="Valikko" id="asd">
             <Navigation>
-              <Link to="/landingpage">KOTI</Link>
+              <Link to="/landingpage">Etusivu</Link>
               <Route exact path="/landingpage" render={(props) => (
                   <landingpage {...props} video={this.state.video}/>
               )}/>
-              <Link to="/">Link</Link>
-              <Link to="/">Link</Link>
+              <Link to="/landingpage">Useampi Streami</Link>
+                      <Route exact path="/multiplestreams" render={(props) => (
+                          <landingpage {...props} video={this.state.video} />
+              )} />
             </Navigation>
           </Drawer>
           <Content>

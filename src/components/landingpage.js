@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import VideoContainer from './VideoContainer';
 
-class landingpage extends Component{
+class Landingpage extends Component{
   render(){
     return(
         <div>
@@ -11,4 +11,4 @@ class landingpage extends Component{
   }
 }
 
-export default landingpage;
+export default Landingpage;
