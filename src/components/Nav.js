@@ -22,10 +22,10 @@ export default function DenseAppBar() {
         <div className={classes.root}>
             <AppBar position="static">
                 <Toolbar variant="dense">
-                    <IconButton edge="start" className={classes.menuButton}  color="inherit" aria-label="menu">
-                        <MenuIcon id="navButton"/>
+                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                        <MenuIcon id="navButton" />
                     </IconButton>
-                    <Typography  id="navButton" variant="h6" color="inherit">
+                    <Typography id="navButton" variant="h6" color="inherit">
                         RappioTube
                     </Typography>
                 </Toolbar>

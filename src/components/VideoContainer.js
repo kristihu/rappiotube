@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 class VideoContainer extends Component {
 
     constructor(props) {
@@ -19,21 +18,31 @@ class VideoContainer extends Component {
 
     createVideo(id) {
 
-        const script = document.createElement("script");
+        const script = document.getElementById("wowzaScript");
         const Wowza = document.createElement("script");
 
-        script.src = "//player.wowza.com/player/latest/wowzaplayer.min.js"; //luo uusi <script> 
+        const WowzaPlayerScripts = document.getElementById("WowzaPlayerScripts");
+
 
         script.async = true;
 
-        Wowza.innerHTML = 'WowzaPlayer.create("playerElement'+id+'", { "license": "PLAY1-ejrM8-zjEKd-6A4J7-9JJnM-7kju6", "title": "GoCoder", "description": "", "sourceURL": "http%3A%2F%2F195.148.104.124%3A1935%2Fmobile%2Fasdasd%2Fplaylist.m3u8", "autoPlay": false, "volume": "75", "mute": false, "loop": false, "audioOnly": false, "uiShowQuickRewind": true,"uiQuickRewindSeconds": "30" } );';
+        Wowza.innerHTML = 'WowzaPlayer.create("playerElement' + id + '", { "license": "PLAY1-ejrM8-zjEKd-6A4J7-9JJnM-7kju6", "title": "GoCoder'+id+'", "description": "", "sourceURL": "http%3A%2F%2F195.148.104.124%3A1935%2Fmobile%2Fasdasd%2Fplaylist.m3u8", "autoPlay": false, "volume": "75", "mute": false, "loop": false, "audioOnly": false, "uiShowQuickRewind": true,"uiQuickRewindSeconds": "30" } );';
 
-        document.body.appendChild(script);
-        document.body.appendChild(Wowza);
+     //   document.body.appendChild(Wowza);
 
-        console.log(script);
+        WowzaPlayerScripts.appendChild(Wowza);
 
-        eval(Wowza); //execute javascript koodi
+        let promise = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                try {
+                    resolve(eval(Wowza));
+                } catch{}
+            }, 1000);
+        });
+
+      //  console.log(script);
+
+     //   eval(Wowza); //execute javascript koodi
 
         console.log(Wowza.title)
 
@@ -41,28 +50,28 @@ class VideoContainer extends Component {
 
     removeVideo(id) {
 
-        const script = document.createElement("script");
-        const Wowza = document.createElement("script");
-        script.src = "//player.wowza.com/player/latest/wowzaplayer.min.js";
-
         console.log("Id: " + id);
 
-        Wowza.innerHTML = 'try {const myPlayer' + id + ' = WowzaPlayer.get("playerElement1"); console.log("Eval working?"); if(myPlayer' + id + ' != null){console.log("Destroyed");myPlayer' + id + '.destroy();}else{console.log("Not destroyed")}} catch{ }';
+        // Wowza.innerHTML = 'try {const myPlayer' + id + ' = WowzaPlayer.get("playerElement1"); console.log("Eval working?",myPlayer' + id + '); if(myPlayer' + id + ' != null){console.log("Destroyed");myPlayer' + id + '.destroy();}else{console.log("Not destroyed");myPlayer' + id + '.destroy();}} catch{ }';
 
-        document.body.appendChild(script);
-        document.body.appendChild(Wowza);
+        //  eval(Wowza); //execute javascript koodi
+        let promise = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                try {
+                    const myPlayer = document.getElementById("wowzaScript").WowzaPlayer.get("playerElement"+id);
+                    console.log("myPlayer: " + myPlayer);
+                    if (myPlayer != null) {
+                        myPlayer.destroy(); console.log("Destroyed");
+                    } else {
+                        console.log("Not destroyed");
+                    }
+                } catch{
+                    console.log("Error on finding Wowza");
+                }
+            }, 2000);
+        });
 
-        eval(Wowza); //execute javascript koodi
-        /*
-        try { const myPlayer = script.WowzaPlayer;
-        console.log("myPlayer: " + myPlayer);
-        if (myPlayer != null) {
-            myPlayer.destroy(); console.log("Destroyed");
-        } else {
-            console.log("Not destroyed");
-            }
-        } catch{ }
-        */
+
         //   eval(Wowza);
     }
 
@@ -73,14 +82,16 @@ class VideoContainer extends Component {
         let playerElementString = "playerElement";
 
         if (currentVideoId === 1) {
+            this.createVideo(5);
             this.setState({ id: 5 });
-            this.setState({ playerElement: (playerElementString + this.state.id) });
-            this.removeVideo(this.state.id);
+            this.setState({ playerElement: (playerElementString + "5") });
+            this.removeVideo(currentVideoId);
         } else {
             currentVideoId--;
+            this.createVideo(currentVideoId);
             this.setState({ id: currentVideoId });
-            this.setState({ playerElement: (playerElementString + this.state.id) });
-            this.removeVideo(this.state.id);
+            this.setState({ playerElement: (playerElementString + currentVideoId ) });
+            this.removeVideo(currentVideoId);
         }
     }
 
@@ -91,13 +102,15 @@ class VideoContainer extends Component {
 
         if (currentVideoId === 5) {
             this.setState({ id: 1 });
-            this.setState({ playerElement: (playerElementString + this.state.id) });
-            this.removeVideo(this.state.id);
+            this.createVideo(1);
+            this.setState({ playerElement: (playerElementString + "1" ) });
+            this.removeVideo(currentVideoId);
         } else {
             currentVideoId++;
+            this.createVideo(currentVideoId);
             this.setState({ id: currentVideoId });
-            this.setState({ playerElement: (playerElementString + this.state.id) });
-            this.removeVideo(this.state.id);
+            this.setState({ playerElement: (playerElementString + currentVideoId ) });
+            this.removeVideo(currentVideoId);
         }
     }
 
