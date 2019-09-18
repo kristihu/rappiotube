@@ -123,11 +123,11 @@ class VideoContainer extends Component {
         return (
             <React.Fragment>
                 <div className="VideoContainer">
-                    <h2>{this.state.playerElement}{" , "}{this.state.id} </h2>
-                    <div>
+                    <h2>{"Video"}{" "}{this.state.id} </h2>
+                {/*    <div>
                         <h4 onClick={this.changeVideoLeft}>Edellinen video</h4>
                         <h4 onClick={this.changeVideoRight}>Seuraava video</h4>
-                    </div>
+                    </div> */}
                     <div className="VideoParent">
                         <div id={this.state.playerElement}></div>
                     </div>
